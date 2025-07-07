@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import PostsPage from "./pages/Posts";
+import BlogForm from "./pages/BlogForm";
 
 const RemoteButton = React.lazy(() => import("remote_app/Button"));
 const RemoteNavbar = React.lazy(() => import("remote_app/Navbar"));
@@ -13,7 +14,8 @@ const HomeContent = () => (
     {/* Left Text */}
     <div className="w-full md:w-1/2 z-10 px-8">
       <h1 className="text-4xl md:text-5xl font-extrabold leading-snug mb-6 text-primary">
-        สร้างเว็บบล็อกที่<br />
+        สร้างเว็บบล็อกที่
+        <br />
         ควรค่าแก่การแบ่งปัน
       </h1>
       <p className="text-lg text-base-content mb-8">
@@ -22,7 +24,7 @@ const HomeContent = () => (
       </p>
 
       <Suspense fallback={<Loading />}>
-        <RemoteButton text="เขียนบล็อก" onClick={() => alert("ไปเขียนบล็อกกัน!")} />
+        <RemoteButton text="เขียนบล็อก" to="/blogform" LinkComponent={Link} />
       </Suspense>
     </div>
 
@@ -47,7 +49,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomeContent />} />
         <Route path="/posts" element={<PostsPage />} />
-        {/* เพิ่ม route อื่น ๆ ได้ตามต้องการ */}
+        <Route path="/blogform" element={<BlogForm />}/>
       </Routes>
     </div>
   );
