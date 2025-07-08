@@ -22,7 +22,7 @@ npm install
 ## 2. วิธีรันโปรเจค
 
 **Terminal 1**  
-cd remote-app (blog-viewer)  
+cd blog-viewer
 npm run build  
 npm run preview  
 
