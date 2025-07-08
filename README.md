@@ -1,4 +1,4 @@
-#Tech Stack
+# Tech Stack
 
 | Feature        | Stack                        |
 |----------------|------------------------------|
@@ -11,20 +11,21 @@
 | State Mgmt     | [Zustand](https://github.com/pmndrs/zustand) |
 
 
-#1. ติดตั้ง Dependencies
+# 1. ติดตั้ง Dependencies
 cd host-app
 npm install
 
 cd ../remote-app
 npm install
 
-#2. วิธีรันโปรเจค
-# Terminal 1
-cd remote-app (blog-viewer)
-npm run build
-npm run preview
+```md
+## 2. วิธีรันโปรเจค
 
-# Terminal 2
-cd host-app
+**Terminal 1**  
+cd remote-app (blog-viewer)  
+npm run build  
+npm run preview  
+
+**Terminal 2**  
+cd host-app  
 npm run dev
-
