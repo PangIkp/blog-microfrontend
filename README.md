@@ -10,7 +10,7 @@
 | Form Handling  | [React Hook Form](https://react-hook-form.com) |
 | State Mgmt     | [Zustand](https://github.com/pmndrs/zustand) |
 
-## 1. ติดตั้ง Dependencies
+## Install Dependencies
 
 ```bash
 cd host-app
