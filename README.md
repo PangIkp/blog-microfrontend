@@ -16,11 +16,11 @@
 cd host-app
 npm install
 
-cd ../remote-app
+cd blog-viewer
 npm install
 
 # Terminal 1
-cd remote-app
+cd blog-viewer
 npm run build
 npm run preview
 
