@@ -19,15 +19,11 @@ npm install
 cd ../remote-app
 npm install
 
-
-```md
-## 2. วิธีรันโปรเจค
-
-**Terminal 1**  
-cd blog-viewer
+# Terminal 1
+cd remote-app
 npm run build
 npm run preview
 
-**Terminal 2**  
-cd host-app  
+# Terminal 2
+cd host-app
 npm run dev
