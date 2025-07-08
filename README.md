@@ -10,21 +10,23 @@
 | Form Handling  | [React Hook Form](https://react-hook-form.com) |
 | State Mgmt     | [Zustand](https://github.com/pmndrs/zustand) |
 
-```md
-# 1. ติดตั้ง Dependencies
+## 1. ติดตั้ง Dependencies
+
+```bash
 cd host-app
 npm install
 
 cd ../remote-app
 npm install
 
+
 ```md
 ## 2. วิธีรันโปรเจค
 
 **Terminal 1**  
 cd blog-viewer
-npm run build  
-npm run preview  
+npm run build
+npm run preview
 
 **Terminal 2**  
 cd host-app  
