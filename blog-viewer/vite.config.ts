@@ -14,6 +14,9 @@ export default defineConfig({
         './Button': './src/components/Button',
         './Header': './src/components/Header',
         './Navbar': './src/components/Navbar',
+        './Footer': './src/components/Footer',
+        './Input': './src/components/Input',
+        
       },
       shared: {
         react: {

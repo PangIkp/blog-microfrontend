@@ -5,6 +5,8 @@ declare module 'remote_app/Button' {
     to?: string;
     onClick?: () => void;
     LinkComponent?: React.ElementType;
+    className?: string;
+    type?: "button" | "submit" | "reset"; 
   }
   const Button: React.FC<ButtonProps>;
   export default Button;
@@ -23,4 +25,27 @@ declare module "remote_app/Navbar" {
 
   const Navbar: React.ComponentType<NavbarProps>;
   export default Navbar;
+}
+
+declare module "remote_app/Footer" {
+  import React from "react";
+
+  const Footer: React.FC;
+  export default Footer;
+}
+
+declare module "remote_app/Input" {
+  import React from "react";
+
+  interface InputProps {
+    label: string;
+    type?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
+    error?: string;
+  }
+
+  const Input: React.FC<InputProps>;
+  export default Input;
 }
