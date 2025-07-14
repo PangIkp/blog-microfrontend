@@ -3,9 +3,10 @@ import Input from "remote_app/Input";
 import RemoteButton from "remote_app/Button";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../api/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
@@ -15,6 +16,7 @@ const LoginPage: React.FC = () => {
     mutationFn: loginUser,
     onSuccess: () => {
       alert("Login successful");
+      navigate("/");
     },
     onError: () => {
       alert("Login failed");
@@ -24,8 +26,8 @@ const LoginPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: typeof errors = {};
-    if (!email) newErrors.email = "กรุณาใส่อีเมล";
-    if (!password) newErrors.password = "กรุณาใส่รหัสผ่าน";
+    if (!email) newErrors.email = "enter your email";
+    if (!password) newErrors.password = "enter your password";
 
     if (Object.keys(newErrors).length === 0) {
       mutation.mutate({ email, password });
