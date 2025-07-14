@@ -4,6 +4,9 @@ import PostsPage from "./pages/Posts";
 import BlogForm from "./pages/BlogForm";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/Register";
+import ProfilePage from "./pages/Profile";
+import useAuthStore from "./stores/useAuthStore";
+import EditProfilePage from "./pages/EditProfile";
 
 const RemoteButton = React.lazy(() => import("remote_app/Button"));
 const RemoteNavbar = React.lazy(() => import("remote_app/Navbar"));
@@ -44,10 +47,11 @@ const HomeContent = () => (
 );
 
 const App: React.FC = () => {
+  const user = useAuthStore((state) => state.user);
   return (
     <div className="min-h-screen flex flex-col">
       <Suspense fallback={<LoadingNavbar />}>
-        <RemoteNavbar LinkComponent={Link} />
+         <RemoteNavbar user={user} LinkComponent={Link} />
       </Suspense>
 
       <main className="flex-grow">
@@ -57,6 +61,8 @@ const App: React.FC = () => {
           <Route path="/blogform" element={<BlogForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/edit" element={<EditProfilePage />} />
         </Routes>
       </main>
 

@@ -3,6 +3,8 @@ import Input from "remote_app/Input";
 import RemoteButton from "remote_app/Button";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../api/auth";
+import { getProfile } from "../api/user";
+import useAuthStore from "../stores/useAuthStore";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
@@ -12,11 +14,27 @@ const LoginPage: React.FC = () => {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {}
   );
+  const setUser = useAuthStore((state) => state.setUser);
+
   const mutation = useMutation({
     mutationFn: loginUser,
-    onSuccess: () => {
-      alert("Login successful");
-      navigate("/");
+    onSuccess: (data) => {
+      const token = data.token;
+      localStorage.setItem("token", token);
+
+      getProfile(token)
+        .then((profile) => {
+          setUser({
+            name: profile.name,
+            email: profile.email,
+            token: token,
+          });
+          alert("Login successful");
+          navigate("/");
+        })
+        .catch(() => {
+          alert("Failed to fetch user profile");
+        });
     },
     onError: () => {
       alert("Login failed");

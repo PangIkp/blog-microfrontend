@@ -21,6 +21,7 @@ declare module "remote_app/Navbar" {
 
   interface NavbarProps {
     LinkComponent?: React.ElementType;
+    user?: { name: string } | null;
   }
 
   const Navbar: React.ComponentType<NavbarProps>;
