@@ -3,6 +3,7 @@ import Input from "remote_app/Input";
 import RemoteButton from "remote_app/Button";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../api/auth";
+import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -57,6 +58,12 @@ const LoginPage: React.FC = () => {
       <Suspense fallback={<div className="w-full h-12 mt-4" />}>
         <RemoteButton text="Login" className="w-full mt-4" type="submit" />
       </Suspense>
+      <p className="text-center mt-4">
+        Don’t have an account?
+        <Link to="/register" className="text-primary hover:underline ml-1">
+          Register here
+        </Link>
+      </p>
     </form>
   );
 };

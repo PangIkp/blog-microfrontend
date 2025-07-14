@@ -3,6 +3,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import PostsPage from "./pages/Posts";
 import BlogForm from "./pages/BlogForm";
 import LoginPage from "./pages/login";
+import RegisterPage from "./pages/Register";
 
 const RemoteButton = React.lazy(() => import("remote_app/Button"));
 const RemoteNavbar = React.lazy(() => import("remote_app/Navbar"));
@@ -17,17 +18,17 @@ const HomeContent = () => (
     {/* Left Text */}
     <div className="w-full md:w-1/2 z-10 px-8">
       <h1 className="text-4xl md:text-5xl font-extrabold leading-snug mb-6 text-primary">
-        สร้างเว็บบล็อกที่
+        Create a blog
         <br />
-        ควรค่าแก่การแบ่งปัน
+        worth sharing
       </h1>
       <p className="text-lg text-base-content mb-8">
-        เปลี่ยนประกายความคิดของคุณให้เป็นรูปธรรมด้วยข้อความบล็อกฟรี
-        รองรับการจัดการได้ทั้งจากเดสก์ท็อปและอุปกรณ์พกพา
+        Turn your ideas into meaningful content with free blogging tools. Fully
+        accessible on both desktop and mobile devices.
       </p>
 
       <Suspense fallback={<Loading />}>
-        <RemoteButton text="เขียนบล็อก" to="/blogform" LinkComponent={Link} />
+        <RemoteButton text="Write a Blog" to="/blogform" LinkComponent={Link} />
       </Suspense>
     </div>
 
@@ -55,10 +56,11 @@ const App: React.FC = () => {
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/blogform" element={<BlogForm />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </main>
 
-      <Suspense fallback={<div>Loading footer...</div>}>
+      <Suspense fallback={<LoadingFooter />}>
         <div>
           <RemoteFooter />
         </div>
