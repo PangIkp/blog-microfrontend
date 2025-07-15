@@ -13,3 +13,21 @@ export const loginUser = async (data: { email: string; password: string }) => {
  console.log(BACKEND_URL)
   return response.json();
 };
+
+export const registerUser = async (data: {
+  name: string;
+  email: string;
+  password: string;
+}) => {
+  const response = await fetch(`${BACKEND_URL}/users`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("Registration failed");
+  }
+
+  return response.json();
+}

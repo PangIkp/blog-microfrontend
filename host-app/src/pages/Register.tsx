@@ -1,6 +1,8 @@
 import React, { useState, Suspense } from "react";
 import Input from "remote_app/Input";
 import RemoteButton from "remote_app/Button";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../api/auth"; 
 
 const RegisterPage: React.FC = () => {
   const [form, setForm] = useState({
@@ -11,28 +13,40 @@ const RegisterPage: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<Partial<typeof form>>({});
+  const navigate = useNavigate();
 
   const handleChange = (field: keyof typeof form, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newErrors: Partial<typeof form> = {};
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const newErrors: Partial<typeof form> = {};
 
-    if (!form.name) newErrors.name = "Please enter your name";
-    if (!form.email) newErrors.email = "Please enter your email";
-    if (!form.password) newErrors.password = "Please enter a password";
-    if (form.password !== form.confirmPassword)
-      newErrors.confirmPassword = "Passwords do not match";
+  if (!form.name) newErrors.name = "Please enter your name";
+  if (!form.email) newErrors.email = "Please enter your email";
+  if (!form.password) newErrors.password = "Please enter a password";
+  if (form.password !== form.confirmPassword)
+    newErrors.confirmPassword = "Passwords do not match";
 
-    if (Object.keys(newErrors).length === 0) {
-      // TODO: call API here
-      alert(`Registered: ${form.email}`);
-    } else {
-      setErrors(newErrors);
+  if (Object.keys(newErrors).length === 0) {
+    try {
+      await registerUser({
+        name: form.name,
+        email: form.email,
+        password: form.password,
+      });
+
+      alert("Registration successful!");
+      navigate("/login"); // ✅ redirect ไปหน้า login
+    } catch (error) {
+      alert("Registration failed. Please try again.");
+      console.error(error);
     }
-  };
+  } else {
+    setErrors(newErrors);
+  }
+};
 
   return (
     <form
