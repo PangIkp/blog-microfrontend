@@ -16,7 +16,7 @@ export default defineConfig({
         './Navbar': './src/components/Navbar',
         './Footer': './src/components/Footer',
         './Input': './src/components/Input',
-        
+        './BlogCard': './src/components/Blogcard',
       },
       shared: {
         react: {

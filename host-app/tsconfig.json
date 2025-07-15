@@ -6,10 +6,11 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    /* Jest-compatible module resolution */
+    "moduleResolution": "node",                
+    "esModuleInterop": true,                   
+    "allowSyntheticDefaultImports": true,     
+    "verbatimModuleSyntax": false,              
     "moduleDetection": "force",
     "noEmit": true,
 
@@ -22,7 +23,9 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "types": ["jest"]
+    
   },
   "include": ["src"]
 }

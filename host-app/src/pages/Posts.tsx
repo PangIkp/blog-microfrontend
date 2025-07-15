@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-const RemoteButton = React.lazy(() => import("remote_app/Button"));
-const Loading = () => <div className="skeleton w-32 h-12">Loading...</div>;
+import BlogCard from "remote_app/BlogCard";
+import Button from "remote_app/Button";
 
 const posts = [
   {
@@ -26,23 +26,25 @@ const posts = [
 const Posts: React.FC = () => {
   return (
     <div className="min-h-screen bg-base-100 px-6 py-24">
-      <h1 className="text-4xl font-bold text-primary mb-8">Latest Posts</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold text-primary">Latest Posts</h1>
+        <Button
+          text="Write a Blog"
+          to="/"
+          LinkComponent={Link}
+          className="btn-error"
+        />
+      </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <div key={post.id} className="card bg-base-200 shadow-md p-6">
-            <h2 className="card-title text-lg text-primary">{post.title}</h2>
-            <p className="text-base-content mt-2">{post.excerpt}</p>
-            <div className="mt-4">
-              <Suspense fallback={<Loading />}>
-                <RemoteButton
-                  text="Read More"
-                  to={`/posts/${post.id}`}
-                  LinkComponent={Link}
-                />
-              </Suspense>
-            </div>
-          </div>
+          <BlogCard
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            excerpt={post.excerpt}
+            LinkComponent={Link}
+          />
         ))}
       </div>
     </div>

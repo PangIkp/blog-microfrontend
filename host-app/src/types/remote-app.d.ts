@@ -50,3 +50,15 @@ declare module "remote_app/Input" {
   const Input: React.FC<InputProps>;
   export default Input;
 }
+
+declare module "remote_app/BlogCard" {
+  import React from "react";
+  interface BlogCardProps {
+    id: number;
+    title: string;
+    excerpt: string;
+    LinkComponent: React.ElementType;
+  }
+  const BlogCard: React.FC<BlogCardProps>;
+  export default BlogCard;
+}
