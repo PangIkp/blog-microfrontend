@@ -7,15 +7,24 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview --port 5174 --strictPort",
-    "serve": "npm run build && npm run preview"
+    "serve": "npm run build && npm run preview",
+    "test": "jest"
   },
   "devDependencies": {
     "@originjs/vite-plugin-federation": "^1.4.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
     "daisyui": "^5.0.43",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
+    "ts-jest": "^29.4.0",
     "typescript": "~5.8.3",
+    "util": "^0.12.5",
     "vite": "^7.0.0"
   },
   "dependencies": {
