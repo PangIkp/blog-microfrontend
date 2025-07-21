@@ -12,7 +12,6 @@ import { useTranslation } from "react-i18next";
 import i18n from "./i18n";
 import "./i18n";
 
-
 const RemoteButton = React.lazy(() => import("remote_app/Button"));
 const RemoteNavbar = React.lazy(() => import("remote_app/Navbar"));
 const RemoteFooter = React.lazy(() => import("remote_app/Footer"));
@@ -28,36 +27,62 @@ const HomeContent = () => {
   const homeTitle = t("homeTitle") || "Create a blog\nworth sharing";
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between py-40 px-20 relative overflow-hidden px-0 max-w-full mx-0">
-      <div className="w-full md:w-1/2 z-10 px-8">
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-snug mb-6 text-primary">
-          // TODO: use text wrapping for multi-line titles
-          {homeTitle.split("\n").map((line, i, arr) => (
-            <React.Fragment key={i}>
-              {line}
-              {i !== arr.length - 1 && <br />}
-            </React.Fragment>
-          ))}
-        </h1>
+    <>
+      {/* ส่วนบน flex-row */}
+      <div className="flex flex-col md:flex-row items-center justify-between py-40 px-20 relative overflow-hidden max-w-full mx-0">
+        <div className="w-full md:w-1/2 z-10 px-8">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-snug mb-6 text-primary">
+            {homeTitle.split("\n").map((line, i, arr) => (
+              <React.Fragment key={i}>
+                {line}
+                {i !== arr.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </h1>
 
-        <p className="text-lg text-base-content mb-8">{t("homeDesc")}</p>
-        
-        <Suspense fallback={<Loading />}>
-          <RemoteButton text={t("writeBlog", "Write a Blog")} to="/blogform" LinkComponent={Link} />
-        </Suspense>
+          <p className="text-lg text-base-content mb-8">{t("homeDesc")}</p>
+
+          <Suspense fallback={<Loading />}>
+            <RemoteButton
+              text={t("writeBlog", "Write a Blog")}
+              to="/blogform"
+              LinkComponent={Link}
+            />
+          </Suspense>
+        </div>
+
+        <div className="w-full md:w-1/2 mt-10 md:mt-0 relative px-8">
+          <img
+            src="https://nestify.io/wp-content/webp-express/webp-images/uploads/2023/11/image-190.png.webp"
+            alt="Blog Preview"
+            className="w-full"
+          />
+        </div>
       </div>
 
-      <div className="w-full md:w-1/2 mt-10 md:mt-0 relative px-8">
-        <img
-          src="https://nestify.io/wp-content/webp-express/webp-images/uploads/2023/11/image-190.png.webp"
-          alt="Blog Preview"
-          className="w-full"
-        />
+      {/* ข้อความเพิ่มใหม่ ข้างนอก flex container ด้านบน */}
+      <div className="px-8 py-32 bg-base-200 text-base-content text-center space-y-12">
+        <h2 className="text-3xl font-bold text-primary">
+          Explore More of Our World
+        </h2>
+        <p className="max-w-xl mx-auto text-lg">
+          Welcome to a world where your ideas matter. Dive into thoughtful
+          articles, expressive opinions, and stories that move you. Whether
+          you're here to write, read, or discover, this is your space to shine.
+        </p>
+        <p className="max-w-xl mx-auto text-lg">
+          Scroll through and get inspired by a community of passionate writers.
+          Creativity lives here, and your next big idea could be just a scroll
+          away.
+        </p>
+        <p className="max-w-xl mx-auto text-lg">
+          Writing is more than just words—it’s connection, emotion, and
+          imagination. Join us and leave your mark in the digital world.
+        </p>
       </div>
-    </div>
+    </>
   );
 };
-
 
 const App: React.FC = () => {
   const user = useAuthStore((state) => state.user);
