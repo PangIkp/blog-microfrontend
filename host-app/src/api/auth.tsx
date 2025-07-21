@@ -1,4 +1,4 @@
-const BACKEND_URL = import.meta.env.VITE_BLOG_BACKEND_USER;
+const BACKEND_URL = process.env.VITE_BLOG_BACKEND_USER || "http://localhost:4001";
 
 export const loginUser = async (data: { email: string; password: string }) => {
   const response = await fetch(`${BACKEND_URL}/auth/login`, {
