@@ -24,7 +24,8 @@
     "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "types": ["node","jest", "msw"]
+    "types": ["node","jest", "msw"],
+    "resolveJsonModule": true 
     
   },
     "include": ["src", "src/vite-env.d.ts"]

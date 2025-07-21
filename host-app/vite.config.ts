@@ -1,14 +1,12 @@
-// host-app/vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-   define: {
+  define: {
     'process.env.VITE_BLOG_BACKEND_USER': JSON.stringify(process.env.VITE_BLOG_BACKEND_USER || 'http://localhost:4001'),
   },
-  
   plugins: [
     tailwindcss(),
     react(),
@@ -26,11 +24,15 @@ export default defineConfig({
           singleton: true,
           requiredVersion: "^18.0.0",
         },
+        i18next: {
+          singleton: true,
+        },
+        "react-i18next": {
+          singleton: true,
+        },
       } as any,
     }),
-    
   ],
-
   build: {
     modulePreload: false,
     target: "esnext",
