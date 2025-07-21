@@ -5,6 +5,10 @@ import federation from "@originjs/vite-plugin-federation";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+   define: {
+    'process.env.VITE_BLOG_BACKEND_USER': JSON.stringify(process.env.VITE_BLOG_BACKEND_USER || 'http://localhost:4001'),
+  },
+  
   plugins: [
     tailwindcss(),
     react(),
@@ -24,6 +28,7 @@ export default defineConfig({
         },
       } as any,
     }),
+    
   ],
 
   build: {
