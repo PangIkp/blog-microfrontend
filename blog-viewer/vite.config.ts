@@ -21,29 +21,35 @@ export default defineConfig({
       shared: {
         react: {
           singleton: true,
-          requiredVersion: '^18.0.0'
+          requiredVersion: '^18.0.0',
         },
         'react-dom': {
           singleton: true,
-          requiredVersion: '^18.0.0'
+          requiredVersion: '^18.0.0',
+        },
+        i18next: {
+          singleton: true,
+        },
+        'react-i18next': {
+          singleton: true,
         },
       } as any,
-    }) 
+    }),
   ],
   build: {
     modulePreload: false,
     target: 'esnext',
     minify: false,
-    cssCodeSplit: false
+    cssCodeSplit: false,
   },
   preview: {
     port: 5173,
     strictPort: true,
-    cors: true
+    cors: true,
   },
   server: {
-  port: 5173,
-  cors: true,
-  strictPort: true,
-},
+    port: 5173,
+    cors: true,
+    strictPort: true,
+  },
 });
