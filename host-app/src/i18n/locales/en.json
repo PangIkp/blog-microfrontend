@@ -1,5 +1,22 @@
 {
   "homeTitle": "Create a blog\nworth sharing",
   "homeDesc": "Turn your ideas into meaningful content with free blogging tools. Fully accessible on both desktop and mobile devices.",
-  "writeBlog": "Write a Blog"
+  "writeBlog": "Write a Blog",
+
+  "home": "Home",
+  "posts": "Posts",
+  "about": "About",
+  "contact": "Contact",
+  "login": "Login",
+  "profile": "Profile",
+  "language": "Language",
+  "english": "English",
+  "thai": "Thai",
+
+  "exploreTitle": "Explore More of Our World",
+  "exploreParagraph1": "Welcome to a world where your ideas matter. Dive into thoughtful articles, expressive opinions, and stories that move you. Whether you're here to write, read, or discover, this is your space to shine.",
+  "exploreParagraph2": "Scroll through and get inspired by a community of passionate writers. Creativity lives here, and your next big idea could be just a scroll away.",
+  "exploreParagraph3": "Writing is more than just words—it’s connection, emotion, and imagination. Join us and leave your mark in the digital world.",
+
+  "readMore": "Read More"
 }

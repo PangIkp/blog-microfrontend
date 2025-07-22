@@ -62,23 +62,10 @@ const HomeContent = () => {
 
       {/* ข้อความเพิ่มใหม่ ข้างนอก flex container ด้านบน */}
       <div className="px-8 py-32 bg-base-200 text-base-content text-center space-y-12">
-        <h2 className="text-3xl font-bold text-primary">
-          Explore More of Our World
-        </h2>
-        <p className="max-w-xl mx-auto text-lg">
-          Welcome to a world where your ideas matter. Dive into thoughtful
-          articles, expressive opinions, and stories that move you. Whether
-          you're here to write, read, or discover, this is your space to shine.
-        </p>
-        <p className="max-w-xl mx-auto text-lg">
-          Scroll through and get inspired by a community of passionate writers.
-          Creativity lives here, and your next big idea could be just a scroll
-          away.
-        </p>
-        <p className="max-w-xl mx-auto text-lg">
-          Writing is more than just words—it’s connection, emotion, and
-          imagination. Join us and leave your mark in the digital world.
-        </p>
+        <h2 className="text-3xl font-bold text-primary">{t("exploreTitle")}</h2>
+        <p className="max-w-xl mx-auto text-lg">{t("exploreParagraph1")}</p>
+        <p className="max-w-xl mx-auto text-lg">{t("exploreParagraph2")}</p>
+        <p className="max-w-xl mx-auto text-lg">{t("exploreParagraph3")}</p>
       </div>
     </>
   );

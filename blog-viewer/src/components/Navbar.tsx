@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaChevronDown } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
@@ -7,12 +7,19 @@ interface NavbarProps {
   user?: { name: string } | null;
 }
 
+const languageLabels: Record<string, string> = {
+  en: "EN",
+  th: "ไทย",
+};
+
 const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
+
+  const currentLangLabel = languageLabels[i18n.language] || "EN";
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-primary text-primary-content px-6 py-4 flex items-center shadow-md z-50">
@@ -26,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
             to="/"
             className="text-primary-content hover:underline"
           >
-            Home
+            {t("home")}
           </LinkComponent>
         </li>
         <li>
@@ -34,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
             to="/posts"
             className="text-primary-content hover:underline"
           >
-            Posts
+            {t("posts")}
           </LinkComponent>
         </li>
         <li>
@@ -42,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
             to="/about"
             className="text-primary-content hover:underline"
           >
-            About
+            {t("about")}
           </LinkComponent>
         </li>
         <li>
@@ -50,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
             to="/contact"
             className="text-primary-content hover:underline"
           >
-            Contact
+            {t("contact")}
           </LinkComponent>
         </li>
       </ul>
@@ -66,13 +73,17 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
             to="/login"
             className="btn btn-outline btn-sm text-primary-content hover:bg-primary hover:text-primary-content"
           >
-            Login
+            {t("login")}
           </LinkComponent>
         )}
 
         <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-sm btn-outline">
-            EN
+          <label
+            tabIndex={0}
+            className="btn btn-sm btn-outline flex items-center space-x-2"
+          >
+            <span>{currentLangLabel}</span>
+            <FaChevronDown className="w-3 h-3" />
           </label>
           <ul
             tabIndex={0}
@@ -83,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
                 className="text-black"
                 onClick={() => changeLanguage("en")}
               >
-                English
+                {t("english")}
               </button>
             </li>
             <li>
@@ -91,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ LinkComponent = "a", user }) => {
                 className="text-black"
                 onClick={() => changeLanguage("th")}
               >
-                ไทย
+                {t("thai")}
               </button>
             </li>
           </ul>
