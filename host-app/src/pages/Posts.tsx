@@ -30,7 +30,7 @@ const Posts: React.FC = () => {
         <h1 className="text-4xl font-bold text-primary">Latest Posts</h1>
         <Button
           text="Write a Blog"
-          to="/"
+          to="/blogform"
           LinkComponent={Link}
           className="btn-error"
         />
