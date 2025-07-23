@@ -7,6 +7,7 @@ import RegisterPage from "./pages/Register";
 import ProfilePage from "./pages/Profile";
 import useAuthStore from "./stores/useAuthStore";
 import EditProfilePage from "./pages/EditProfile";
+import PostDetail from "./pages/PostDetail";
 import { I18nextProvider } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import i18n from "./i18n";
@@ -89,6 +90,8 @@ const App: React.FC = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
+
           </Routes>
         </main>
 

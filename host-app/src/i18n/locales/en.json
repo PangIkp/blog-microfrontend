@@ -18,5 +18,10 @@
   "exploreParagraph2": "Scroll through and get inspired by a community of passionate writers. Creativity lives here, and your next big idea could be just a scroll away.",
   "exploreParagraph3": "Writing is more than just words—it’s connection, emotion, and imagination. Join us and leave your mark in the digital world.",
 
-  "readMore": "Read More"
+  "readMore": "Read More",
+
+  "postNotFound": "Post not found.",
+  "category": "Category",
+  "author": "Author"
+
 }
