@@ -87,6 +87,13 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
 
+
+/* ถ้า CSS ของ host ถูกโหลดหลัง CSS ของ remote, Host จะมีโอกาสเขียนทับได้ */
+/* .card {
+  background-color: blue !important;
+  color: black !important;
+} */
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
