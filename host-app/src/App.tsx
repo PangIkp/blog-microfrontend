@@ -8,10 +8,13 @@ import ProfilePage from "./pages/Profile";
 import useAuthStore from "./stores/useAuthStore";
 import EditProfilePage from "./pages/EditProfile";
 import PostDetail from "./pages/PostDetail";
+import TestDaisy from "./pages/TestDaisy";
+import TestAnt from "./pages/TestAnt";
 import { I18nextProvider } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import i18n from "./i18n";
 import "./i18n";
+
 
 const RemoteButton = React.lazy(() => import("remote_app/Button"));
 const RemoteNavbar = React.lazy(() => import("remote_app/Navbar"));
@@ -91,6 +94,9 @@ const App: React.FC = () => {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
             <Route path="/posts/:id" element={<PostDetail />} />
+            <Route path="/testdaisy" element={<TestDaisy/>}/>
+            <Route path="/testant" element={<TestAnt/>}/>
+            
 
           </Routes>
         </main>
