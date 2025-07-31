@@ -8,14 +8,19 @@ interface BlogCardProps {
   LinkComponent: React.ElementType;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ id, title, excerpt, LinkComponent }) => {
+const BlogCard: React.FC<BlogCardProps> = ({
+  id,
+  title,
+  excerpt,
+  LinkComponent,
+}) => {
   const { t } = useTranslation();
 
   return (
     <div className="card bg-base-200 shadow-md p-6">
-    {/* <div className="card bg-red-500 text-white shadow-md p-6"> */}
+      {/* <div className="card bg-red-500 text-white shadow-md p-6"> */}
       <h2 className="card-title text-lg text-primary">{title}</h2>
-      <p className="text-base-content mt-2">{excerpt}</p>
+      <p className="text-base-content mt-2 overflow-auto max-h-24">{excerpt}</p>
       <div className="mt-4 flex justify-end">
         <LinkComponent
           to={`/posts/${id}`}

@@ -1,29 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BlogCard from "remote_app/BlogCard";
 import Button from "remote_app/Button";
-
-const posts = [
-  {
-    id: 1,
-    title: "เริ่มต้นสร้างบล็อกของคุณด้วย Microfrontend",
-    excerpt:
-      "Microfrontend ทำให้ระบบเว็บแยกส่วนได้ดีขึ้น พร้อมจัดการได้ง่ายทั้งฝั่ง dev และ deploy...",
-  },
-  {
-    id: 2,
-    title: "5 แนวคิดของการเขียนบล็อกที่ควรแชร์",
-    excerpt: "จากประสบการณ์ตรง การเขียนบล็อกที่ดีควรมีองค์ประกอบเหล่านี้...",
-  },
-  {
-    id: 3,
-    title: "Tailwind CSS + DaisyUI กับธีม retro เท่ ๆ",
-    excerpt:
-      "ธีม retro ใน DaisyUI ทำให้เว็บไซต์ดูมีสไตล์ย้อนยุคทันสมัย ลองปรับใช้กับบล็อกของคุณดู...",
-  },
-];
+import { getAllPosts } from "../api/blog";
 
 const Posts: React.FC = () => {
+  const [posts, setPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await getAllPosts();
+        setPosts(response);
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+        setError("Failed to fetch posts");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
   return (
     <div className="min-h-screen bg-base-100 px-6 py-24">
       <div className="flex justify-between items-center mb-8">
@@ -36,17 +36,23 @@ const Posts: React.FC = () => {
         />
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <BlogCard
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            excerpt={post.excerpt}
-            LinkComponent={Link}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <p className="text-center text-primary">Loading...</p>
+      ) : error ? (
+        <p className="text-center text-error">{error}</p>
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <BlogCard
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              excerpt={post.content}
+              LinkComponent={Link}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
