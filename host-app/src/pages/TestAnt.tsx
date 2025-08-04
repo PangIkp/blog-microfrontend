@@ -32,19 +32,17 @@ const TestAnt = () => {
     {
       title: "Status",
       dataIndex: "status",
-      render: (value:any) => <Progress percent={value} status="exception" />,
+      render: (value: any) => <Progress percent={value} status="exception" />,
     },
   ];
 
-  const data = [
-    {
-      key: "1",
-      name: "Fulltime Employee",
-      process: "50%",
-      end: "01/08/2025",
-      status: 50,
-    },
-  ];
+  const data = Array.from({ length: 23 }).map((_, i) => ({
+    key: i.toString(),
+    name: `Questionnaire ${i + 1}`,
+    process: `${Math.floor(Math.random() * 100)}%`,
+    end: "01/08/2025",
+    status: Math.floor(Math.random() * 100),
+  }));
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -88,7 +86,8 @@ const TestAnt = () => {
             }
           >
             <Paragraph style={{ color: "#555" }}>
-              Kindly be reminded to gather and record all necessary information...
+              Kindly be reminded to gather and record all necessary
+              information...
             </Paragraph>
           </Card>
 
@@ -109,14 +108,21 @@ const TestAnt = () => {
               <Card
                 title="Your Assignments"
                 extra={
-                  <Tabs defaultActiveKey="1" items={[
-                    { key: '1', label: 'On Process' },
-                    { key: '2', label: 'Finished' }
-                  ]} />
+                  <Tabs
+                    defaultActiveKey="1"
+                    items={[
+                      { key: "1", label: "On Process" },
+                      { key: "2", label: "Finished" },
+                    ]}
+                  />
                 }
               >
                 {/* pagination กำหนดแถวต่อหน้าได้เลย */}
-                <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }}/>
+                <Table
+                  columns={columns}
+                  dataSource={data}
+                  pagination={{ pageSize: 5 }}
+                />
               </Card>
             </Col>
           </Row>
@@ -125,7 +131,13 @@ const TestAnt = () => {
           <Row gutter={16} style={{ marginTop: 24 }}>
             <Col xs={24} lg={16}>
               <Card title="Graph Title" style={{ height: 300 }}>
-                <div style={{ height: "100%", textAlign: "center", paddingTop: 100 }}>
+                <div
+                  style={{
+                    height: "100%",
+                    textAlign: "center",
+                    paddingTop: 100,
+                  }}
+                >
                   Bar Chart Here
                 </div>
               </Card>
@@ -134,14 +146,26 @@ const TestAnt = () => {
               <Row gutter={[0, 16]}>
                 <Col span={24}>
                   <Card title="Graph Title">
-                    <div style={{ height: 100, textAlign: "center", paddingTop: 35 }}>
+                    <div
+                      style={{
+                        height: 100,
+                        textAlign: "center",
+                        paddingTop: 35,
+                      }}
+                    >
                       Line Chart
                     </div>
                   </Card>
                 </Col>
                 <Col span={24}>
                   <Card title="Graph Title">
-                    <div style={{ height: 100, textAlign: "center", paddingTop: 35 }}>
+                    <div
+                      style={{
+                        height: 100,
+                        textAlign: "center",
+                        paddingTop: 35,
+                      }}
+                    >
                       Column Chart
                     </div>
                   </Card>

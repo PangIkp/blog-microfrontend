@@ -53,13 +53,13 @@ const PostDetail: React.FC = () => {
 
     <h1 className="text-3xl font-bold text-primary mb-6">{post.title}</h1>
 
-    {/* {post.imageUrl && ( */}
+    {post.imageUrl && (
       <img
         src={post.imageUrl}
         alt={post.title}
         className="w-full h-auto rounded-lg mb-6"
       />
-    {/* )} */}
+    )}
 
     {paragraphs.map((paragraph, idx) => (
       <p key={idx} className="mb-4 text-base-content leading-relaxed text-justify">
